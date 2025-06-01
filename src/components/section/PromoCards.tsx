@@ -32,7 +32,7 @@ export const PromoCards = () => {
     },
   ];
 
-  const handleDragEnd = (event: MouseEvent, info: PanInfo) => {
+  const handleDragEnd = (_event: MouseEvent, info: PanInfo) => {
     if (info.offset.x > 50 && currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
     } else if (info.offset.x < -50 && currentIndex < cards.length - 1) {

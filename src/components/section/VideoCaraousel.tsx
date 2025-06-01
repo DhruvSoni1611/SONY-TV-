@@ -78,7 +78,7 @@ export const VideoCarousel = () => {
             </motion.div>
             <motion.div
               style={{ scale }}
-              className="relative aspect-[9/16] w-[300px] shrink-0 overflow-clip rounded-2xl md:aspect-video md:w-[60vw]"
+              className="relative aspect-[9/16] w-[200px] shrink-0 overflow-clip rounded-2xl md:aspect-video md:w-[60vw]"
             >
               <img
                 className="h-full w-full object-cover"

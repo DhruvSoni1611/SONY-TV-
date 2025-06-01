@@ -8,6 +8,7 @@ export default {
       backgroundContrast: "#111",
       textBlack: "#1d1d1f",
       white: "#fff",
+      textGray: "#A1A1A6",
     },
     fontFamily: {
       sans: [
@@ -26,7 +27,7 @@ export default {
       // 17
       base: "1.0265rem",
       // 19
-      lg: "1.1875rem",
+      lg: ["1.1875rem", "1.21"],
       // 21
       xl: "1.3125rem",
       // 24
@@ -34,20 +35,37 @@ export default {
       // 28
       "3xl": "1.75rem",
       // 40
-      "4xl": "2.5rem",
+      "4xl": ["2.5rem", "1.1"],
+      // 50
+      "4x": "3rem",
       // 70
       "5xl": ["4.5rem", "1.05"],
     },
     keyframes: {
       "carousel-move": {
         "0%": { transform: "translateX(0)" },
-        "100%": { transform: "translateX(-100%)" },
+        "100%": {
+          transform: "translateX(calc(-100% - var(--carousel-offset, 0px)))",
+        },
+      },
+      "carousel-move-slow": {
+        "0%": { transform: "translateX(0)" },
+        "100%": {
+          transform: "translateX(calc(-100% - var(--carousel-offset, 0px)))",
+        },
       },
     },
     animation: {
-      "carousel-move": "carousel-move var(--duration,80s) infinite",
+      "carousel-move": "carousel-move var(--duration,80s) linear infinite",
+      "carousel-move-slow":
+        "carousel-move-slow calc(var(--duration,80s) * 2) linear infinite",
     },
-    extend: {},
+    extend: {
+      animation: {
+        play: "running",
+        pause: "paused",
+      },
+    },
   },
   plugins: [],
 };

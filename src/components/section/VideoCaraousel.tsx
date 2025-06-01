@@ -123,6 +123,12 @@ export const VideoCarousel = () => {
           <SmallVideoCarousel movies={randomMoviesSet2} />
         </div>
       </motion.div>
+
+      <div className="flex items-center justify-center mt-5">
+        <button className="bg-none border-white border-2 rounded-full px-6 py-3 text-white font-semibold mt-5">
+          See full lineup &gt;
+        </button>
+      </div>
     </motion.div>
   );
 };
@@ -130,10 +136,10 @@ export const VideoCarousel = () => {
 const SmallVideoCarousel = ({ movies }: { movies: Movie[] }) => {
   return (
     <div className="overflow-clip">
-      <div className="animate-carousel-move relative left-[var(--carousel-offset,0px)] flex gap-3">
+      <div className="animate-carousel-move hover:animate-carousel-move-slow relative left-[var(--carousel-offset,0px)] flex gap-3">
         {movies.map((movie, index) => (
           <div
-            className="aspect-video w-[40vw] shrink-0 md:w-[23vw]"
+            className="aspect-video w-[60vw] shrink-0 md:w-[23vw] relative group"
             key={`${movie.name}-${index}`}
           >
             <img
@@ -141,6 +147,14 @@ const SmallVideoCarousel = ({ movies }: { movies: Movie[] }) => {
               src={movie.poster}
               alt={movie.name}
             />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-all duration-300 flex items-center justify-center rounded-xl">
+              <Button
+                className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-textBlack px-4 py-2 rounded-full"
+                size="md"
+              >
+                Stream Now
+              </Button>
+            </div>
           </div>
         ))}
       </div>

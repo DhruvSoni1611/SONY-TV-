@@ -4,10 +4,10 @@ export type Movie = {
 };
 
 export const movies = [
-  { poster: "/posters/AssaiansCreed.jpg", name: "Assians" },
+  { poster: "/posters/AssaiansCreed.jpg", name: "Assasians" },
   {
     poster: "/posters/GOT1.jpg",
-    name: "Game Of Thrones",
+    name: "Game Of Thrones 1",
   },
   {
     poster: "/posters/LostMan.jpeg",
@@ -22,9 +22,9 @@ export const movies = [
     poster: "/posters/TakeBackEarth2.jpg",
     name: "Take Back Earth 2",
   },
-  { poster: "/posters/GOT2.jpg", name: "Game Of Thrones" },
-  { poster: "/posters/far-cry.jpg", name: "Far Cry" },
-  { poster: "/posters/far-cry2.jpg", name: "Far Cry" },
+  { poster: "/posters/GOT2.jpg", name: "Game Of Thrones 2" },
+  { poster: "/posters/far-cry.jpg", name: "Far Cry 1" },
+  { poster: "/posters/far-cry2.jpg", name: "Far Cry 2" },
   { poster: "/posters/Camera1.jpg", name: "Man in Camera" },
 ];
 

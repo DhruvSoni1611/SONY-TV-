@@ -9,7 +9,7 @@ type Props = {
 
 export const Button = ({ children, size = "md", className }: Props) => {
   const sizeClassNames = {
-    sm: "text-xs px-2 py-1",
+    sm: "text-sm px-4 py-1",
     md: "text-sm px-5 py-3",
     lg: "text-base px-8 py-4",
   };

@@ -22,7 +22,9 @@ export const Header = () => {
       <div className="bg-backgroundContrast sticky top-0 z-20 text-white">
         <Container className="flex items-center min-h-[--header-row-height] justify-between">
           <p className="text-xl font-semibold">SONY TV+</p>
-          <Button size="sm">Stream Now</Button>
+          <Button className="font-semibold" size="sm">
+            Stream Now
+          </Button>
         </Container>
       </div>
     </>

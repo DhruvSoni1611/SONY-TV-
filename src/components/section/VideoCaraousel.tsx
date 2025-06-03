@@ -22,6 +22,17 @@ export const VideoCarousel = () => {
     offset: ["start start", "end start"],
   });
 
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const totalSlides = movies.length - 2;
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
+  };
+
   const maximumScale = useMemo(() => {
     const windowYRatio = height / width;
     const xScale = 1.66667;
@@ -60,6 +71,21 @@ export const VideoCarousel = () => {
 
   return (
     <motion.div animate={carouselVariant} className="bg-background pb-16">
+      <div className="relative top-1/2 left-0 right-0 flex justify-between px-4 z-20">
+        <button
+          onClick={prevSlide}
+          className="bg-black/50 text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-black/70 transition-all"
+        >
+          &lt;
+        </button>
+        <button
+          onClick={nextSlide}
+          className="bg-black/50 text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-black/70 transition-all"
+        >
+          &gt;
+        </button>
+      </div>
+
       <div
         ref={carouselWrapperRef}
         className="mt-[-100vh] h-[300vh] overflow-clip"
@@ -67,13 +93,16 @@ export const VideoCarousel = () => {
         <div className="sticky top-0 flex h-screen items-center">
           <div className="relative left-1/2 mb-5 flex -translate-x-1/2 gap-5">
             <motion.div
-              style={{ opacity: postersOpacity, x: posterTranslateXLeft }}
+              style={{
+                opacity: postersOpacity,
+                x: posterTranslateXLeft,
+              }}
               className="aspect-[9/16] w-[300px] shrink-0 overflow-clip rounded-2xl md:aspect-video md:w-[60vw]"
             >
               <img
                 className="h-full w-full object-cover"
-                src={movies[0].poster}
-                alt={movies[0].name}
+                src={movies[currentSlide].poster}
+                alt={movies[currentSlide].name}
               />
             </motion.div>
             <motion.div
@@ -82,8 +111,8 @@ export const VideoCarousel = () => {
             >
               <img
                 className="h-full w-full object-cover"
-                src={movies[1].poster}
-                alt={movies[1].name}
+                src={movies[currentSlide + 1].poster}
+                alt={movies[currentSlide + 1].name}
               />
               <motion.div
                 variants={{
@@ -96,20 +125,24 @@ export const VideoCarousel = () => {
                 <Button>Watch now</Button>
               </motion.div>
             </motion.div>
+
+            {/* Next Movie */}
             <motion.div
-              style={{ opacity: postersOpacity, x: posterTranslateXRight }}
+              style={{
+                opacity: postersOpacity,
+                x: posterTranslateXRight,
+              }}
               className="aspect-[9/16] w-[300px] shrink-0 overflow-clip rounded-2xl md:aspect-video md:w-[60vw]"
             >
               <img
                 className="h-full w-full object-cover"
-                src={movies[2].poster}
-                alt={movies[2].name}
+                src={movies[currentSlide + 2].poster}
+                alt={movies[currentSlide + 2].name}
               />
             </motion.div>
           </div>
         </div>
       </div>
-
       <motion.div
         variants={{
           active: { opacity: 1, y: 0 },
@@ -118,8 +151,9 @@ export const VideoCarousel = () => {
         transition={{ duration: 0.4 }}
         className="-mt-[calc((100vh-(300px*(16/9)))/2)] space-y-3 pt-20 md:-mt-[calc((100vh-(60vw*(9/16)))/2)]"
       >
-        <SmallVideoCarousel movies={randomMoviesSet1} />
-        <div className="[--carousel-offset:-32px] [--duration:74s]">
+        <SmallVideoCarousel movies={randomMoviesSet1} duration="40s" />{" "}
+        <div className="[--carousel-offset:-32px] [--duration:40s]">
+          {" "}
           <SmallVideoCarousel movies={randomMoviesSet2} />
         </div>
       </motion.div>
@@ -133,10 +167,19 @@ export const VideoCarousel = () => {
   );
 };
 
-const SmallVideoCarousel = ({ movies }: { movies: Movie[] }) => {
+const SmallVideoCarousel = ({
+  movies,
+  duration = "80s",
+}: {
+  movies: Movie[];
+  duration?: string;
+}) => {
   return (
     <div className="overflow-clip">
-      <div className="animate-carousel-move hover:animate-carousel-move-slow relative left-[var(--carousel-offset,0px)] flex gap-3">
+      <div
+        className="animate-carousel-move hover:animate-carousel-move-slow relative left-[var(--carousel-offset,0px)] flex gap-3"
+        style={{ "--duration": duration } as React.CSSProperties}
+      >
         {movies.map((movie, index) => (
           <div
             className="aspect-video w-[60vw] shrink-0 md:w-[23vw] relative group"

@@ -93,7 +93,7 @@ export const Hero = () => {
               <br />
               Only on Sony TV+
             </h1>
-            <div className="flex flex-col items-center md:items-start">
+            <div className="flex flex-col items-center md:items-start font-semibold">
               <Button size="lg" className="mb-10 md:mb-16">
                 Stream Now
               </Button>

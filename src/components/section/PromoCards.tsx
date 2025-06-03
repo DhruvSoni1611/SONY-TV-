@@ -10,25 +10,25 @@ export const PromoCards = () => {
 
   const cards = [
     {
-      title: "Buy an Apple device",
+      title: "Buy an Sony device",
       highlight: "3 months free.",
       description:
-        "Apple TV+ is included for 3 months when you purchase an Apple device and redeem the offer within 90 days.²",
+        "Sony TV+ is included for 3 months when you purchase an Sony device and redeem the offer within 90 days.²",
       cta: "Check eligibility",
     },
     {
       title: "Free 7-day trial",
       highlight: "$9.99/mo.",
       description:
-        "A monthly subscription is just $9.99 per month after a free 7-day trial.³ Share Apple TV+ with your family.⁶",
+        "A monthly subscription is just $9.99 per month after a free 7-day trial.³ Share Sony TV+ with your family.⁶",
       cta: "Try it free",
     },
     {
       title: "Free 1-month trial",
-      highlight: "Apple One",
+      highlight: "Sony One",
       description:
-        "Bundle Apple TV+ with up to five other great services for one low monthly price. And enjoy more for less.",
-      cta: "Try Apple One free⁵",
+        "Bundle Sony TV+ with up to five other great services for one low monthly price. And enjoy more for less.",
+      cta: "Try Sony One free⁵",
     },
   ];
 
@@ -91,7 +91,6 @@ export const PromoCards = () => {
           ))}
         </motion.div>
 
-        {/* Navigation Dots */}
         <div className="flex justify-center mt-6 space-x-2">
           {cards.map((_, index) => (
             <button
